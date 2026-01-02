@@ -48,7 +48,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ xml });
   
     } catch (err: unknown) {
-      // در سرور، فقط JSON با خطا برگردان
       let errorMessage = "خطای ناشناخته";
       if (err instanceof Error) errorMessage = err.message;
   
