@@ -32,8 +32,12 @@ export default function SitemapGenerator() {
 
             setResult(data.xml);
             setShowBox(true);
-        } catch (err: any) {
-            setError(err.message || "خطای شبکه");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message || "خطای شبکه");
+            } else {
+                setError("خطای ناشناخته");
+            }
         } finally {
             setLoading(false);
         }
